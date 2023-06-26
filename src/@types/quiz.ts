@@ -1,4 +1,13 @@
 
+export class QuizPublicId {
+    readonly value: string;
+
+    constructor(value: string) {
+        if (!value || value.trim().length === 0) console.warn("QuizPublicId.value must not be null");
+        this.value = value;
+    }
+}
+
 export class Quiz {
     readonly publicId: QuizPublicId;
     readonly title: string;
@@ -23,19 +32,14 @@ export class Quiz {
     }
 }
 
-export class QuizSubmit {
-    readonly quizPublicId : QuizPublicId;
-    readonly choicePublicId: ChoicePublicId;
+export class ChoicePublicId {
+    readonly value: string;
 
-    constructor(quizPublicId: QuizPublicId, choicePublicId: ChoicePublicId) {
-        if (!quizPublicId) console.warn("QuizSubmit.quizPublicId must not be null");
-        if (!choicePublicId) console.warn("QuizSubmit.choicePublicId must not be null");
-        this.quizPublicId = quizPublicId;
-        this.choicePublicId = choicePublicId;
+    constructor(value: string) {
+        if (!value || value.trim().length === 0) console.warn("ChoicePublicId.value must not be null");
+        this.value = value;
     }
 }
-
-
 
 export class Choice {
     readonly publicId: ChoicePublicId;
@@ -49,20 +53,14 @@ export class Choice {
     }
 }
 
-export class ChoicePublicId {
-    readonly value: string;
+export class QuizSubmit {
+    readonly quizPublicId : QuizPublicId;
+    readonly choicePublicId: ChoicePublicId;
 
-    constructor(value: string) {
-        if (!value || value.trim().length === 0) console.warn("ChoicePublicId.value must not be null");
-        this.value = value;
-    }
-}
-
-export class QuizPublicId {
-    readonly value: string;
-
-    constructor(value: string) {
-        if (!value || value.trim().length === 0) console.warn("QuizPublicId.value must not be null");
-        this.value = value;
+    constructor(quizPublicId: QuizPublicId, choicePublicId: ChoicePublicId) {
+        if (!quizPublicId) console.warn("QuizSubmit.quizPublicId must not be null");
+        if (!choicePublicId) console.warn("QuizSubmit.choicePublicId must not be null");
+        this.quizPublicId = quizPublicId;
+        this.choicePublicId = choicePublicId;
     }
 }

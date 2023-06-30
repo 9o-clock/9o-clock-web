@@ -1,3 +1,5 @@
+import React from "react";
+import {Button, SimpleGrid, Text} from "@chakra-ui/react";
 
 export class QuizPublicId {
     readonly value: string;
@@ -30,6 +32,32 @@ export class Quiz {
         this.releaseAt = releaseAt;
         this.answerReleaseAt = answerReleaseAt;
     }
+
+    makeTitleUI() {
+        return (
+            <Text>{this.title}</Text>
+        )
+    }
+
+    makeContentUI() {
+        return (
+            <Text>{this.content}</Text>
+        )
+    }
+
+    makeChoicesUI() {
+        return (
+            <SimpleGrid
+                spacingY='5px'
+                columns={1}
+                w={'100%'}
+                maxH={'200px'}>
+                {
+                    this.choices.map((c) => c.makeComponent())
+                }
+            </SimpleGrid>
+        )
+    }
 }
 
 export class ChoicePublicId {
@@ -51,10 +79,18 @@ export class Choice {
         this.text = text;
         this.publicId = publicId;
     }
+
+    makeComponent() {
+        return (
+            <Button background={'orange'} w={'100%'}>
+                {this.text}
+            </Button>
+        )
+    }
 }
 
 export class QuizSubmit {
-    readonly quizPublicId : QuizPublicId;
+    readonly quizPublicId: QuizPublicId;
     readonly choicePublicId: ChoicePublicId;
 
     constructor(quizPublicId: QuizPublicId, choicePublicId: ChoicePublicId) {

@@ -5,7 +5,7 @@ import {QuizPublicId} from "@/types/quiz";
 function App() {
   return (
     <div className="App">
-      <QuizDetail quizPublicId={new QuizPublicId('')}/>
+      <QuizDetail quizPublicId={new QuizPublicId('AA')}/>
     </div>
   );
 }
